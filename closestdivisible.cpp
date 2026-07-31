@@ -3,20 +3,14 @@ class Solution {
     int closestNumber(int n, int m) {
         int t=n;
         int k=n;
-        bool found=false;
-        while(!found){
-            if(t%m==0||k%m==0){
-                found=1;
-                break;
-            }else{
-                t++,k--;
-                found=0;
+        while(true){
+            bool tok=(t%m==0);
+            bool kok=(k%m==0);
+            if(tok && kok) return abs(t)>abs(k)?t:k;
+            if(tok) return t;   
+            if(kok) return k;
+            t++;            
+            k--;
             }
         }
-        if (abs(t)>abs(k))
-            cout << t << endl;
-        else
-            cout << k << endl;
-        return 0;
-    }
-};
+    };
